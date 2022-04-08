@@ -4,17 +4,30 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup git
+        run: git config --global user.email $EMAIL
+        run: git config --global user.name $NAME
+        env:
+          EMAIL : $ {{ secrets.EMAIL }}
+          NAME : $ {{ secrets.NAME }}
       - name: Clone gitlab repository
         run: git clone https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@git.hhu.de/jubok100/test
         env:
          GITLAB_TOKEN_NAME : ${{ secrets.GITLAB_TOKEN_NAME }}
          GITLAB_TOKEN : ${{ secrets.GITLAB_TOKEN}}
-      - run: ls -la
-      - run: cd test
-      - uses: actions/checkout@v3
-      - run: ls -la
-      - run: cd ..
-      - run: git add .
-      - run: git commit -m "📝 update stuff"
-      - run: git push https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@git.hhu.de/jubok100/test
+      - name: Navigate to correct folder
+        run: ls -la
+        run: cd test
+      - name: Clone github repo
+        uses: actions/checkout@v3
+      - name: Navigate back
+        run: ls -la
+        run: cd ..
+      - name: Commit and push to gitlab
+        run: git add .
+        run: git commit -m "📝 update stuff"
+        run: git push https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@git.hhu.de/jubok100/test
+        env:
+         GITLAB_TOKEN_NAME : ${{ secrets.GITLAB_TOKEN_NAME }}
+         GITLAB_TOKEN : ${{ secrets.GITLAB_TOKEN}}
 
