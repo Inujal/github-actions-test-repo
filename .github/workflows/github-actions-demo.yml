@@ -4,11 +4,11 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      -name: Clone gitlab repository
-       run: git clone https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@git.hhu.de/jubok100/test
-       env:
-        GITLAB_TOKEN_NAME : ${{ secrets.GITLAB_TOKEN_NAME }}
-        GITLAB_TOKEN : ${{ secrets.GITLAB_TOKEN}}
+      - name: Clone gitlab repository
+        run: git clone https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@git.hhu.de/jubok100/test
+        env:
+         GITLAB_TOKEN_NAME : ${{ secrets.GITLAB_TOKEN_NAME }}
+         GITLAB_TOKEN : ${{ secrets.GITLAB_TOKEN}}
       - run: ls -la
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
