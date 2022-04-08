@@ -25,6 +25,12 @@ jobs:
         run: ls -la
       - name: Copy files
         run: cp -a github-actions-test-repo/. test/testfolder/
+      - name: Delete a file
+        run: rm test/testfolder/.github/workflows/github-actions-demo.yml
+      - name: Delete a folder
+        run: rm -d test/testfolder/.github/workflows
+      - name: Delete a folder
+        run: rm -d test/testfolder/.github
       - name: Check git
         working-directory: ./test
         run: git status
