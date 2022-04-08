@@ -20,7 +20,10 @@ jobs:
       - name: Navigate to correct folder
         run: cd test/testfolder/
       - name: Clone github repo
-        uses: actions/checkout@v3
+        run: git clone https://$GITHUB_NAME:$GITHUB_TOKEN@github.com:Inujal/github-actions-test-repo.git
+        env:
+         GITHUB_NAME : ${{ secrets.G_NAME }}
+         GITHUB_TOKEN : ${{ secrets.G_TOKEN}
       - name: Check files
         run: ls -la
       - name: Check git
