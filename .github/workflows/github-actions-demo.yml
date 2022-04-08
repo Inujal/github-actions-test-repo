@@ -4,11 +4,13 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup git
+      - name: Setup git email
         run: git config --global user.email "$EMAIL"
-        run: git config --global user.name "$NAME"
         env:
           EMAIL : ${{ secrets.EMAIL }}
+      - name: Setup git name
+        run: git config --global user.name "$NAME"
+        env:
           NAME : ${{ secrets.NAME }}
       - name: Clone gitlab repository
         run: git clone https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@git.hhu.de/jubok100/test
