@@ -18,12 +18,13 @@ jobs:
          GITLAB_TOKEN_NAME : ${{ secrets.GITLAB_TOKEN_NAME }}
          GITLAB_TOKEN : ${{ secrets.GITLAB_TOKEN}}
       - name: Clone github repo
-        working-directory: ./test/testfolder
         run: git clone https://$GITHUB_TOKEN:x-oauth-basic@github.com/Inujal/github-actions-test-repo.git
         env:
          GITHUB_TOKEN : ${{ secrets.G_TOKEN }}
       - name: Check files
         run: ls -la
+      - name: Copy files
+        run: cp -a /github-actions-test-repo/. /test/testfolder/
       - name: Check git
         working-directory: ./test
         run: git status
