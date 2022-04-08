@@ -15,6 +15,6 @@ jobs:
       - run: ls -la
       - run: cd ..
       - run: git add .
-      - run: git commit -m ":memo: update stuff"
+      - run: git commit -m "📝 update stuff"
       - run: git push https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@git.hhu.de/jubok100/test
 
