@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone gitlab repository
-        run: git clone https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@https://git.hhu.de/jubok100/test
+        run: git clone https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@git.hhu.de/jubok100/test
         env:
          GITLAB_TOKEN_NAME : ${{ secrets.GITLAB_TOKEN_NAME }}
          GITLAB_TOKEN : ${{ secrets.GITLAB_TOKEN}}
