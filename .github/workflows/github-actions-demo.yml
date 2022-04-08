@@ -24,7 +24,7 @@ jobs:
       - name: Check files
         run: ls -la
       - name: Copy files
-        run: cp -a /github-actions-test-repo/. /test/testfolder/
+        run: cp -a github-actions-test-repo/. test/testfolder/
       - name: Check git
         working-directory: ./test
         run: git status
