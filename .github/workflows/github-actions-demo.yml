@@ -18,9 +18,15 @@ jobs:
          GITLAB_TOKEN_NAME : ${{ secrets.GITLAB_TOKEN_NAME }}
          GITLAB_TOKEN : ${{ secrets.GITLAB_TOKEN}}
       - name: Navigate to correct folder
-        run: cd test
+        run: cd test/testfolder/
       - name: Clone github repo
         uses: actions/checkout@v3
+      - name: Check files
+        run: ls -la
+      - name: Check git
+        run: git status
+      - name: Navigate up
+        run: cd ..
       - name: Check files
         run: ls -la
       - name: Check git
