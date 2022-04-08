@@ -17,25 +17,24 @@ jobs:
         env:
          GITLAB_TOKEN_NAME : ${{ secrets.GITLAB_TOKEN_NAME }}
          GITLAB_TOKEN : ${{ secrets.GITLAB_TOKEN}}
-      - name: Navigate to correct folder
-        run: cd test/testfolder/
       - name: Clone github repo
+        working-directory: ./test/testfolder
         run: git clone https://$GITHUB_TOKEN:x-oauth-basic@github.com/Inujal/github-actions-test-repo.git
         env:
          GITHUB_TOKEN : ${{ secrets.G_TOKEN }}
       - name: Check files
         run: ls -la
-      - name: Navigate up
-        run: cd ..
-      - name: Check files
-        run: ls -la
       - name: Check git
+        working-directory: ./test
         run: git status
       - name: Git add
+        working-directory: ./test
         run: git add .
       - name: Git commit
+        working-directory: ./test
         run: git commit -m "📝 update stuff"
       - name: Push to gitlab
+        working-directory: ./test
         run: git push https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@git.hhu.de/jubok100/test
         env:
          GITLAB_TOKEN_NAME : ${{ secrets.GITLAB_TOKEN_NAME }}
