@@ -5,11 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone gitlab repository
-        run: git clone https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@git.hhu.de/jubok100/test
+        run: git clone https://$GITLAB_TOKEN_NAME:$GITLAB_TOKEN@https://git.hhu.de/jubok100/test
         env:
          GITLAB_TOKEN_NAME : ${{ secrets.GITLAB_TOKEN_NAME }}
          GITLAB_TOKEN : ${{ secrets.GITLAB_TOKEN}}
       - run: ls -la
+      - run: cd test
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
